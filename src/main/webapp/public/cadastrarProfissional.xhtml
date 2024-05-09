@@ -1,0 +1,75 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+ "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+ <html xmlns="http://www.w3.org/1999/xhtml"
+        xmlns:h="http://xmlns.jcp.org/jsf/html"
+        xmlns:f="http://xmlns.jcp.org/jsf/core"
+        xmlns:p="http://primefaces.org/ui">
+    <h:head></h:head>
+    <h:body>
+        <h:form id="incluir">
+            <p:growl id="message" showDetail="true"/>
+            <p:panel header="Cadastro de Profissional">
+                <h:panelGrid columns="3" layout="grid">
+
+                    <p:outputLabel for="tipoCadastro" value="Tipo de Cadastro"/>
+                    <p:selectOneMenu id="tipoCadastro" value="#{profissionalController.profissional.tipoCadastro}">
+                        <f:selectItem itemLabel="Selecione um tipo de Cadastro"/>
+                        <f:selectItems value="#{profissionalController.tiposCadastro}" 
+                                        var="tipoCadastro" 
+                                        itemLabel="#{tipoCadastro}"
+                                        itemValue="#{tipoCadastro}"/>
+                    </p:selectOneMenu>
+                    <p:message for="tipoCadastro" style="color:red"/>
+
+                    <p:outputLabel for="nome" value="Nome"/>
+                    <p:inputText id="nome" value="#{profissionalController.profissional.nome}"/>
+                    <p:message for="nome" style="color:red"/>
+
+                    <p:outputLabel for="cpf" value="CPF"/>
+                    <p:inputMask id="cpf" mask="999.999.999-99" 
+                                            validateMask="true" 
+                                            value="#{profissionalController.profissional.cpf}"/>
+                    <p:message for="cpf" style="color:red"/>
+
+                    <p:outputLabel for="email" value="E-Mail"/>
+                    <p:inputText id="email" value="#{profissionalController.profissional.email}"/>
+                    <p:message for="email" style="color:red"/>
+
+                    <p:outputLabel for="nascimento" value="Nascimento"/>
+                    <p:datePicker id="nascimento" value="#{profissionalController.profissional.nascimento}" pattern="dd/MM/yyyy" mask="true">
+                        <f:convertDateTime pattern="dd/MM/yyyy" type="localDate"/>
+                    </p:datePicker>
+                    <p:message for="nascimento" style="color:red"/>
+
+                    <p:outputLabel for="telefone" value="Celular"/>
+                    <p:inputMask id="telefone" mask="(99)99999-9999" 
+                                                value="#{profissionalController.profissional.telefone}"/>
+                    <p:message for="telefone" style="color:red"/>
+
+                    <p:outputLabel for="senha" value="Senha"/>
+                    <p:password id="senha" value="#{profissionalController.profissional.senha}" toggleMask="true" redisplay="true"/>
+                    <p:message for="senha" style="color:red"/>
+
+                    <p:outputLabel for="titulos" value="Titulos"/>
+                    <p:selectManyMenu id="titulos" value="#{profissionalController.profissional.titulos}" 
+                                                    showCheckbox="true" 
+                                                    required="true" 
+                                                    requiredMessage="Selectione pelo menos um título!">
+                        <f:selectItems value="#{profissionalController.titulos}" var="titulo" itemLabel="#{titulo.descricao}" itemValue="#{titulo}"/>
+                    </p:selectManyMenu>
+
+                    <p:commandButton update="message @form" value="Salvar" action="#{profissionalController.salvar}">
+                        <p:confirm header="Salvar" message="Confirma inclusão do Profissional?" icon="pi pi-exclamation-triangle"/>
+                    </p:commandButton>
+
+                    <p:confirmDialog global="true" showEffect="fade" hideEffect="fade" responsive="true" width="350">
+                        <p:commandButton value="Não" type="button" styleClass="ui-confirmdialog-no ui-button-flat"/>
+                        <p:commandButton value="Sim" type="button" styleClass="ui-confirmdialog-yes"/>
+                    </p:confirmDialog>
+                    
+                </h:panelGrid>
+            </p:panel>
+        </h:form>
+    </h:body>
+</html>
