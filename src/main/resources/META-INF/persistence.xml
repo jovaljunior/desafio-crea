@@ -14,9 +14,11 @@
             <property name="jakarta.persistence.jdbc.user" value="postgres"/>
             <property name="jakarta.persistence.jdbc.password" value="postgres"/>
             <property name="jakarta.persistence.schema-generation.database.action" value="drop-and-create"/>
-            <property name="jakarta.persistence.schema-generation.scripts.action" value="create"/>
-            <property name="jakarta.persistence.schema-generation.scripts.create-target" value="src/main/resources/META-INF/createDDL.sql"/>
             <property name="jakarta.persistence.sql-load-script-source" value="META-INF/dados.sql" />
+            <!--
+            <property name="jakarta.persistence.schema-generation.scripts.action" value="create"/>
+            <property name="jakarta.persistence.schema-generation.scripts.create-target" value="src/main/resources/META-INF/createDDL.ddl"/>
+            -->
             <property name="hibernate.transaction.jta.platform" value="org.hibernate.service.jta.platform.internal.SunOneJtaPlatform"/>
             <property name="hibernate.allow_update_outside_transaction" value="true"/>
         </properties>
