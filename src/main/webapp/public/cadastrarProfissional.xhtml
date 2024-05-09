@@ -57,19 +57,23 @@
                                                     required="true" 
                                                     requiredMessage="Selectione pelo menos um título!">
                         <f:selectItems value="#{profissionalController.titulos}" var="titulo" itemLabel="#{titulo.descricao}" itemValue="#{titulo}"/>
-                    </p:selectManyMenu>
-
-                    <p:commandButton update="message @form" value="Salvar" action="#{profissionalController.salvar}">
-                        <p:confirm header="Salvar" message="Confirma inclusão do Profissional?" icon="pi pi-exclamation-triangle"/>
-                    </p:commandButton>
-
-                    <p:confirmDialog global="true" showEffect="fade" hideEffect="fade" responsive="true" width="350">
-                        <p:commandButton value="Não" type="button" styleClass="ui-confirmdialog-no ui-button-flat"/>
-                        <p:commandButton value="Sim" type="button" styleClass="ui-confirmdialog-yes"/>
-                    </p:confirmDialog>
-                    
+                    </p:selectManyMenu>                    
                 </h:panelGrid>
+                <p:commandButton update="message @form" value="Salvar" action="#{profissionalController.salvar}">
+                    <p:confirm header="Salvar" message="Confirma inclusão do Profissional?" icon="pi pi-exclamation-triangle"/>
+                </p:commandButton>
+
+                <p:confirmDialog global="true" showEffect="fade" hideEffect="fade" responsive="true" width="350">
+                    <p:commandButton value="Não" type="button" styleClass="ui-confirmdialog-no ui-button-flat"/>
+                    <p:commandButton value="Sim" type="button" styleClass="ui-confirmdialog-yes"/>
+                </p:confirmDialog>
             </p:panel>
         </h:form>
+        <br/>
+        <br/>
+        <p:linkButton id="homeFromCadastro" 
+                        outcome="/home" 
+                        style="margin-right:20px;"
+                        value="Voltar para a página inicial"/>
     </h:body>
 </html>
